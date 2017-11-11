@@ -1,0 +1,12 @@
+{
+  "name": "stockScraper",
+  "version": "1.0.0",
+  "lockfileVersion": 1,
+  "requires": true,
+  "dependencies": {
+    "axios": "*",
+    "yargs": "*",
+    "util": "*",
+    "moment": "*"
+  }
+}
