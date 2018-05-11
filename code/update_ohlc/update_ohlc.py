@@ -64,11 +64,15 @@ def main(args):
     try:
         adjustedClose = d['chart']['result'][0]['indicators']['adjclose'][0]['adjclose']
     except KeyError:
-        adjustedClose = 0
+        adjustedClose = []
+        for x in range(0,len(timestamp)):
+            adjustedClose.append("0")
     try:
         unadjustedClose = d['chart']['result'][0]['indicators']['unadjclose'][0]['unadjclose']
     except KeyError:
-        unadjustedClose = 0
+        unadjustedClose = []
+        for x in range(0,len(timestamp)):
+            unadjustedClose.append("0")
     name = d["chart"]["result"][0]["meta"]["symbol"]
     volume = d['chart']['result'][0]['indicators']['quote'][0]['volume']
 
