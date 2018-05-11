@@ -61,8 +61,14 @@ def main(args):
     highPrice = d['chart']['result'][0]['indicators']['quote'][0]['high']
     closePrice = d['chart']['result'][0]['indicators']['quote'][0]['close']
     openPrice = d['chart']['result'][0]['indicators']['quote'][0]['open']
-    adjustedClose = d['chart']['result'][0]['indicators']['adjclose'][0]['adjclose']
-    unadjustedClose = d['chart']['result'][0]['indicators']['unadjclose'][0]['unadjclose']
+    try:
+        adjustedClose = d['chart']['result'][0]['indicators']['adjclose'][0]['adjclose']
+    except KeyError:
+        adjustedClose = 0
+    try:
+        unadjustedClose = d['chart']['result'][0]['indicators']['unadjclose'][0]['unadjclose']
+    except KeyError:
+        unadjustedClose = 0
     name = d["chart"]["result"][0]["meta"]["symbol"]
     volume = d['chart']['result'][0]['indicators']['quote'][0]['volume']
 
@@ -93,4 +99,6 @@ if __name__ == "__main__":
     parser.add_argument('period', metavar='Period - Daily/weekly/monthly', type=Period, nargs=1,
                         help='Daily/Weekly/Monthly OHLC information')
     args = parser.parse_args()
+    print args
+    print args.period[0]
     main(args)
